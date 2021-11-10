@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+<style type="text/css">
+div {
+	font-size: 8pt;
+	color: red;
+	font-weight: bold;
+}
+
+</style>
+</head>
+<body>
+	<form name="writeForm" method="post" action="http://localhost:8080/memberServlet/WriteServlet">
+		<!-- 데이터가 보이면 안되니까 post 방식 이용해야 한다 --><!-- POST라고 안쓰면 그냥 다 GET방식으로 적용된다  -->
+		<table border="1" cellspacing="0" cellpadding="5">
+			<!-- cellspacing="0" 두줄을 한줄로  -->
+			<tr>
+				<td width="100" align="center" >이름</td>
+				<td>
+					<input type="text" name="name"  id="name" placeholder="이름입력">
+					<div id="nameDiv"></div>
+				</td>
+					
+			</tr>
+			<tr>
+				<td width="100" align="center" >아이디</td>
+				<td>
+					<input type="text" name="id" id="id" placeholder="아이디입력" >
+					<input type="button" value="중복체크" onclick="checkId()">
+					<div id="idDiv"></div>
+				</td>
+			</tr>
+			<tr>
+				<td width="100" align="center">비밀번호</td>
+				<td>
+					<input type="password" name="pwd" id="pwd" size="30" placeholder="비밀번호 입력" >
+					<!-- 그냥 넓게 잡음 -->
+					<div id="pwdDiv"></div>
+				</td>
+			</tr>
+			<tr>
+				<td width="100" align="center">재확인</td>
+				<td>
+					<input type="password" name="repwd" id="repwd" placeholder="비밀번호 입력"  >
+					<div id="repwdDiv"></div>
+				</td>
+			</tr>
+			
+			<tr>
+				<td width="100" align="center">성별</td>
+				<td>
+					<input type="radio" name="gender" value="0" checked="checked">남
+					<input type="radio" name="gender" value="1">여
+				</td>
+			</tr>
+			
+			<tr>
+				<td width="100" align="center">이메일</td>
+				<td>
+					<input type="text" name="email1" >@
+			
+					<input type="email" name=email2 list="email2" placeholder="직접입력">
+					<datalist id = "email2">
+						<option value="직접입력">직접입력</option>
+						<option value="gmail.com" >gmail.com</option>
+						<option value="daum.net">daum.net</option>
+						<option value="naver.com">naver.com</option>
+					</datalist>
+					<!-- <select name="email3">
+						<option value="none">직접입력</option>
+						<option value="none" >gmail.com</option>
+						<option value="none">daum.net</option>
+						<option value="none">naver.com</option>			
+					</select> -->
+				</td>
+			</tr>
+			<tr>
+				<td width="100" align="center">핸드폰</td>
+				<td>
+					<select name="tel1" style="width: 70px;">
+						<option value="010" selected>010</option>
+						<option value="011" >011</option>
+						<option value="019">019</option>			
+					</select>-
+					<input type="text" name="tel2" size="4" maxlength="4">-
+					<input type="text" name="tel3"  size="4" maxlength="4">
+	
+				</td>
+			</tr>
+			<tr>
+				<td width="100" align="center">주소</td>
+				<td>
+					<input type="text" name="zipcode" id="zipcode" readonly><!-- 데이터 입력 안되게  -->
+					<input type="button"  value="우편번호검색" onclick="execDaumPostcode()"><br>
+					<input type="text" name="addr1" id="addr1" size="60" placeholder="주소" readonly><br>
+					<input type="text" name="addr2" id="addr2" size="60" placeholder="상세주소" >
+					
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+				<input type="button" id="writeBtn" value="회원가입" onclick="checkWrite()"> 
+				<!-- id="writeBtn" => 제이쿼리하면 이것만 있으면 되는것!!  -->
+				<input type="reset" value="다시작성">
+				</td>
+			</tr>
+		</table>
+	</form>
+<!-- <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script> -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- 제이쿼리가 위로가야지  -->
+<!-- daum 우편번호 api  -->
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+<script type="text/javascript" src="http://localhost:8080/memberServlet/js/member.js"></script><!-- 바디 밖으로 나가면 안된다!  -->
+
+</body>
+</html>
